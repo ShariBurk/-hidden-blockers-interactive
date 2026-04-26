@@ -1514,7 +1514,7 @@ const S = {
    Requires: tts-1 and whisper-1 model access (standard account)
    Best used in: Chrome or Safari
 ════════════════════════════════════════════════════════════ */
-const OPENAI_API_KEY = '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'; 
+const OPENAI_API_KEY = ''; 
 
 let currentlySpeaking = false;
 let currentlyListening = false;
@@ -1704,7 +1704,7 @@ async function testVoice() {
     audio.onerror = () => { alert('Audio playback failed — try Chrome or Safari'); if (btn) btn.textContent = 'Test Voice'; };
     await audio.play();
   } catch(e) {
-    alert('FETCH ERROR: ' + e.message + '\n\nThis usually means the browser blocked the request. Try Chrome.');
+    alert('DETAILED ERROR:\n\nType: ' + e.name + '\nMessage: ' + e.message + '\n\nKey starts with: ' + (OPENAI_API_KEY ? OPENAI_API_KEY.substring(0,12) + '...' : 'EMPTY'));
     if (btn) btn.textContent = 'Test Voice';
   }
 }
